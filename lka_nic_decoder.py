@@ -2,6 +2,7 @@ from dataclasses import dataclass
 from datetime import date, datetime, timedelta
 import re
 from typing import Tuple
+from banner import nic_banner
 
 __all__ = [
     "NICInfo",
@@ -87,12 +88,13 @@ def decode_nic(nic: str, offset: int = DEFAULT_NIC_DAY_OFFSET) -> NICInfo:
 
 def main():
     try:
+        nic_banner()
         nic = input("Enter NIC number: ").strip()
         info = decode_nic(nic)
-        print(f"NIC Type: {info.nic_type}")
+        print(f"\nNIC Type: {info.nic_type}")
         print(f"Birth Year: {info.birth_year}")
         print(f"Gender: {info.gender}")
-        print("Date of Birth:", info.birth_date.strftime("%d %B %Y"))
+        print("Date of Birth:", info.birth_date.strftime("%d %B %Y"),"\n")
     except Exception as e:
         print("Error:", e)
 
