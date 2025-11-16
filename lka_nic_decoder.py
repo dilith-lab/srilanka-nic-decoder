@@ -104,10 +104,10 @@ def main():
         nic_banner()
         nic = input("\nEnter NIC number: ").strip()
         info = decode_nic(nic)
-        print(f"\nNIC Type: {info.nic_type}")
-        print(f"Birth Year: {info.birth_year}")
-        print(f"Gender: {info.gender}")
-        print("Date of Birth:", info.birth_date.strftime("%d %B %Y"),"\n")
+        print(f"\nNIC Type:\t{info.nic_type}")
+        print(f"Birth Year:\t{info.birth_year}")
+        print(f"Gender:\t\t{info.gender}")
+        print("Date of Birth:\t",info.birth_date.strftime("%d %B %Y"),"\n",sep="")
     except Exception as e:
         print("Error:", e)
 

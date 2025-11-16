@@ -277,7 +277,7 @@ print(info.birth_date)    # 1991-09-24
 Follows Semantic Versioning (SemVer):
 
 ```
-1.0.16
+1.0.17
 ```
 
 ## 📄 License

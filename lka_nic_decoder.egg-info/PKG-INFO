@@ -1,6 +1,6 @@
 Metadata-Version: 2.4
 Name: lka-nic-decoder
-Version: 1.0.16
+Version: 1.0.17
 Summary: Decode Sri Lankan NIC numbers into birth date, gender, and NIC type
 Home-page: https://github.com/dilith-lab/srilanka-nic-decoder
 Author: Dilith Achalan
@@ -299,7 +299,7 @@ print(info.birth_date)    # 1991-09-24
 Follows Semantic Versioning (SemVer):
 
 ```
-1.0.16
+1.0.17
 ```
 
 ## 📄 License
