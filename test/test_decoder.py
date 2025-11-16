@@ -1,6 +1,6 @@
 import pytest
 from datetime import date
-from srilanka_nic_decoder import decode_nic, nic_to_date, parse_nic_base, DEFAULT_NIC_DAY_OFFSET
+from lka_nic_decoder import decode_nic, nic_to_date, parse_nic_base, DEFAULT_NIC_DAY_OFFSET
 
 def test_parse_old_nic():
     nic_type, year, raw = parse_nic_base("912680444V")
