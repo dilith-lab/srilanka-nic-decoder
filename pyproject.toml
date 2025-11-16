@@ -1,5 +1,5 @@
 [build-system]
-requires = ["setuptools>=61.0", "wheel"]
+requires = ["setuptools>=61.0", "wheel", "build"]
 build-backend = "setuptools.build_meta"
 
 [project]
@@ -22,5 +22,5 @@ classifiers = [
 ]
 
 [project.urls]
-"Homepage" = "https://github.com/dilith-lab/srilanka-nic-decoder"
-"Repository" = "https://github.com/dilith-lab/srilanka-nic-decoder"
+Homepage = "https://github.com/dilith-lab/srilanka-nic-decoder"
+Repository = "https://github.com/dilith-lab/srilanka-nic-decoder"
