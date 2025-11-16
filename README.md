@@ -27,13 +27,13 @@ It also implements the correct **NIC day-number offset** discovered from real NI
 ## 📦 Installation
 
 ```bash
-pip install srilanka-nic-decoder
+pip install lka-nic-decoder
 ```
 
 ## 🔧 Usage Example
 
 ```python
-from srilanka_nic_decoder import decode_nic
+from lka_nic_decoder import decode_nic
 
 # Decode an old NIC
 info = decode_nic("912680444V")
@@ -50,6 +50,68 @@ print(info_new.nic_type)      # New NIC
 print(info_new.gender)        # Female
 print(info_new.birth_year)    # 1992
 print(info_new.birth_date)    # 1992-02-05
+```
+
+## 📋 Import Methods
+
+### 1. Import Specific Function (Recommended)
+```python
+from lka_nic_decoder import decode_nic
+info = decode_nic("912680444V")
+```
+
+### 2. Import Entire Module
+```python
+import lka_nic_decoder
+info = lka_nic_decoder.decode_nic("912680444V")
+```
+
+### 3. Import Multiple Functions
+```python
+from lka_nic_decoder import decode_nic, parse_nic_base, nic_to_date
+info = decode_nic("912680444V")
+nic_type, year, day_code = parse_nic_base("912680444V")
+```
+
+### 4. Import with Alias
+```python
+from lka_nic_decoder import decode_nic as decode
+info = decode("912680444V")
+```
+
+### 5. Import Validation Function
+```python
+from lka_nic_decoder import is_valid_nic, decode_nic
+
+if is_valid_nic("912680444V"):
+    info = decode_nic("912680444V")
+    print(f"Valid NIC: {info.birth_date}")
+```
+
+### 6. Import Dataclass for Type Hints
+```python
+from lka_nic_decoder import NICInfo, decode_nic
+
+def process_nic(nic: str) -> NICInfo:
+    return decode_nic(nic)
+```
+
+### 7. Import Constants
+```python
+from lka_nic_decoder import DEFAULT_NIC_DAY_OFFSET, nic_to_date
+custom_date = nic_to_date(1991, 268, offset=DEFAULT_NIC_DAY_OFFSET)
+```
+
+### 8. Error Handling Pattern
+```python
+from lka_nic_decoder import decode_nic, is_valid_nic
+
+try:
+    if is_valid_nic("912680444V"):
+        info = decode_nic("912680444V")
+        print(f"Birth Date: {info.birth_date}")
+except ValueError as e:
+    print(f"Error: {e}")
 ```
 
 ## 📘 What the Decoder Extracts
@@ -118,7 +180,7 @@ Main high-level function — decodes a Sri Lankan NIC and returns a `NICInfo` da
 
 **Example:**
 ```python
-from srilanka_nic_decoder import decode_nic
+from lka_nic_decoder import decode_nic
 
 info = decode_nic("912680444V")
 print(info.birth_date)  # 1991-09-24
@@ -130,7 +192,7 @@ Parses NIC type, birth year, and raw day code without computing the full date.
 ```python
 (nic_type, birth_year, raw_day_code)
 
-from srilanka_nic_decoder import parse_nic_base
+from lka_nic_decoder import parse_nic_base
 
 nic_type, birth_year, day_code = parse_nic_base("912680444V")
 print(nic_type)    # Old NIC
@@ -148,7 +210,7 @@ Converts the day-of-year code to an actual `datetime.date`.
 
 **Example:**
 ```python
-from srilanka_nic_decoder import nic_to_date
+from lka_nic_decoder import nic_to_date
 from datetime import date
 
 birth_date = nic_to_date(1991, 268)
@@ -159,7 +221,7 @@ Checks if a NIC string is a valid format (10-character old NIC or 12-digit new N
 
 **Example:**
 ```python
-from srilanka_nic_decoder import is_valid_nic
+from lka_nic_decoder import is_valid_nic
 
 print(is_valid_nic("912680444V"))  # True
 print(is_valid_nic("1234567890"))  # True
@@ -183,7 +245,7 @@ class NICInfo:
     birth_date: date
 
 
-from srilanka_nic_decoder import decode_nic
+from lka_nic_decoder import decode_nic
 
 info = decode_nic("912680444V")
 print(info.nic_type)      # Old NIC
