@@ -1,6 +1,6 @@
-# srilanka-nic-decoder.py
+# srilanka_nic_decoder.py
 """
-srilanka-nic-decoder — small utility to decode Sri Lankan NIC numbers into birth date and gender.
+srilanka_nic_decoder — small utility to decode Sri Lankan NIC numbers into birth date and gender.
 
 Key design decisions:
 - Uses Python's datetime for accurate date arithmetic (leap years, month boundaries).
