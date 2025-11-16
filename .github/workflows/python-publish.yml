@@ -1,6 +1,10 @@
 # This workflow will upload a Python Package using Twine when a release is created
 # For more information see: https://help.github.com/en/actions/language-and-framework-guides/using-python-with-github-actions#publishing-to-package-registries
 
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
 name: Publish Python 🐍 distributions 📦 to PyPI and TestPyPI
 
 on: push
@@ -8,13 +12,11 @@ on: push
 jobs:
   build-n-publish:
     name: Build and publish Python 🐍 distributions 📦 to PyPI and TestPyPI
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
+    runs-on: ubuntu-18.04
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@master
       - name: Set up Python 3.9
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v1
         with:
           python-version: 3.9
       - name: Install pypa/build
@@ -32,15 +34,13 @@ jobs:
           --outdir dist/
           .
       - name: Publish distribution 📦 to Test PyPI
-        uses: pypa/gh-action-pypi-publish@v1.8.14
+        uses: pypa/gh-action-pypi-publish@master
         with:
-          user: __token__
           password: ${{ secrets.TEST_PYPI_API_TOKEN }}
-          repository-url: https://test.pypi.org/legacy/
-          skip-existing: true
+          repository_url: https://test.pypi.org/legacy/
+          skip_existing: true
       - name: Publish distribution 📦 to PyPI
         if: startsWith(github.ref, 'refs/tags')
-        uses: pypa/gh-action-pypi-publish@v1.8.14
+        uses: pypa/gh-action-pypi-publish@master
         with:
-          user: __token__
           password: ${{ secrets.PYPI_API_TOKEN }}
